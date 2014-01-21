@@ -3,6 +3,7 @@ package models.brownPeterson;
 import play.db.ebean.*;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Collections;
 import java.util.ArrayList;
 
 @Entity
@@ -24,11 +25,17 @@ public class Question extends Model {
 	}
 
 	public static List<Question> getQuestionListBy(int amount){
-		List<Question> questionList= new ArrayList<Question>();
-		for(int i = 0;i < amount;i++){
-			questionList.add(findQuestionById(i+1));
+		List<Question> allQuestion = new ArrayList<Question>();
+		List<Question> questionList = new ArrayList<Question>();
+        allQuestion = find.all();
+        if(allQuestion.size() >= amount){
+	        Collections.shuffle(allQuestion);
+			for(int i = 0;i < amount;i++){
+				questionList.add(allQuestion.get(i));
+			}
+			return questionList;
 		}
-		return questionList;
+		return null;
 	}
         
 	public static Finder<Long,Question> find = new Finder(Long.class,Question.class);

@@ -118,6 +118,7 @@ public class QuestionTest extends WithApplication{
     	assertNotEquals(questionList.get(2).id, questionList.get(1).id);
 
     }
+
     @Test
     public void randomTwoQuestionListShouldNotSame(){
     	new Question("hello1","world1","!!!1").save();
@@ -131,5 +132,18 @@ public class QuestionTest extends WithApplication{
 
     	assertNotEquals(questionList1.get(0).id, questionList2.get(0).id);
     	assertNotEquals(questionList1.get(1).id, questionList2.get(1).id);
+    }
+
+    @Test
+    public void amountOverflow() {
+    	new Question("hello1","world1","!!!1").save();
+    	new Question("hello2","world2","!!!2").save();
+    	new Question("hello3","world3","!!!3").save();
+    	new Question("hello4","world4","!!!4").save();
+    	new Question("hello5","world5","!!!5").save();
+
+    	List<Question> questionList = Question.getQuestionListBy(10);
+
+    	assertNull(questionList);
     }
 }
