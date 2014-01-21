@@ -2,6 +2,8 @@ package models.brownPeterson;
 
 import play.db.ebean.*;
 import javax.persistence.*;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class Question extends Model {
@@ -17,5 +19,18 @@ public class Question extends Model {
 		this.thirdWord = thirdWord;
 	}
 
+	public static Question findQuestionById(int id) {
+		return find.byId(new Long(id));
+	}
+
+	public static List<Question> getQuestionListBy(int amount){
+		List<Question> questionList= new ArrayList<Question>();
+		for(int i = 0;i < amount;i++){
+			questionList.add(findQuestionById(i+1));
+		}
+		return questionList;
+	}
+        
 	public static Finder<Long,Question> find = new Finder(Long.class,Question.class);
+
 }

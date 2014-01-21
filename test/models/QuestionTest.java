@@ -3,6 +3,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static play.test.Helpers.*;
 import models.brownPeterson.Question;
+import java.util.List;
 
 public class QuestionTest extends WithApplication{
 	@Before
@@ -39,14 +40,96 @@ public class QuestionTest extends WithApplication{
     	assertEquals("world",q.secondWord);
     	assertEquals("!!!",q.thirdWord);
     }
-    
+
     @Test
     public void recieveQuestionById(){
     	new Question("hello","world","!!!").save();
-        Question q = Question.findQuestionById(long(1));
+        Question q = Question.findQuestionById(1);
     	assertEquals("hello",q.firstWord);
     	assertEquals("world",q.secondWord);
     	assertEquals("!!!",q.thirdWord);
     }    
 
+    @Test
+    public void recieveQuestionListByThree(){
+    	new Question("hello1","world1","!!!1").save();
+    	new Question("hello2","world2","!!!2").save();
+    	new Question("hello3","world3","!!!3").save();
+    	new Question("hello4","world4","!!!4").save();
+    	new Question("hello5","world5","!!!5").save();
+
+    	List<Question> questionList = Question.getQuestionListBy(3);
+    	assertEquals(3,questionList.size());
+    }
+
+    @Test
+    public void recieveQuestionListByFive(){
+    	new Question("hello1","world1","!!!1").save();
+    	new Question("hello2","world2","!!!2").save();
+    	new Question("hello3","world3","!!!3").save();
+    	new Question("hello4","world4","!!!4").save();
+    	new Question("hello5","world5","!!!5").save();
+
+    	List<Question> questionList = Question.getQuestionListBy(5);
+    	assertEquals(5,questionList.size());
+    }
+
+    @Test
+    public void recieveQuestionByAmountThreeNotNull(){
+     	new Question("hello1","world1","!!!1").save();
+    	new Question("hello2","world2","!!!2").save();
+    	new Question("hello3","world3","!!!3").save();
+    	new Question("hello4","world4","!!!4").save();
+    	new Question("hello5","world5","!!!5").save();
+    	
+     	List<Question> questionList = Question.getQuestionListBy(3);
+   		assertNotNull(questionList.get(0));
+   		assertNotNull(questionList.get(1));
+   		assertNotNull(questionList.get(2));
+    }
+
+    @Test
+    public void recieveQuestionByAmountByfiveNotNull(){
+     	new Question("hello1","world1","!!!1").save();
+    	new Question("hello2","world2","!!!2").save();
+    	new Question("hello3","world3","!!!3").save();
+    	new Question("hello4","world4","!!!4").save();
+    	new Question("hello5","world5","!!!5").save();
+    	
+     	List<Question> questionList = Question.getQuestionListBy(5);
+   		assertNotNull(questionList.get(0));
+   		assertNotNull(questionList.get(1));
+   		assertNotNull(questionList.get(2));
+   		assertNotNull(questionList.get(3));
+   		assertNotNull(questionList.get(4));
+    }
+
+    @Test
+    public void questionMemberInListShouldNotSame() {
+    	new Question("hello1","world1","!!!1").save();
+    	new Question("hello2","world2","!!!2").save();
+    	new Question("hello3","world3","!!!3").save();
+    	new Question("hello4","world4","!!!4").save();
+    	new Question("hello5","world5","!!!5").save();
+
+    	List<Question> questionList = Question.getQuestionListBy(3);
+    	assertNotEquals(questionList.get(0).id, questionList.get(1).id);
+    	assertNotEquals(questionList.get(0).id, questionList.get(2).id);
+    	assertNotEquals(questionList.get(2).id, questionList.get(1).id);
+
+    }
+    @Test
+    public void randomTwoQuestionListShouldNotSame(){
+    	new Question("hello1","world1","!!!1").save();
+    	new Question("hello2","world2","!!!2").save();
+    	new Question("hello3","world3","!!!3").save();
+    	new Question("hello4","world4","!!!4").save();
+    	new Question("hello5","world5","!!!5").save();
+
+    	List<Question> questionList1 = Question.getQuestionListBy(2);
+    	List<Question> questionList2 = Question.getQuestionListBy(2);
+
+    	assertNotEquals(questionList1.get(0).id, questionList2.get(0).id);
+    	assertNotEquals(questionList1.get(1).id, questionList2.get(1).id);
+    }
 }
