@@ -48,22 +48,28 @@ public class QuestionSetTest extends WithApplication {
 
 	@Test
 	public void questionSetShouldBeCreateBySubmit() {
-		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,10), new Date(114,1,11));
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,30), new Date(114,1,31));
 		assertNotNull(q_set);
 	}
 
 	@Test
 	public void questionSetShouldBeModifableWhenSubmit(){
-		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,10), new Date(114,1,11));
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,30), new Date(114,1,31));
 		assertEquals("Experiment 1", q_set.name);
 		assertEquals(3, q_set.noOfTrial);
-		assertEquals(new Date(114, 1, 10),q_set.startDate);
-		assertEquals(new Date(114, 1, 11),q_set.expireDate);
+		assertEquals(new Date(114, 1, 30),q_set.startDate);
+		assertEquals(new Date(114, 1, 31),q_set.expireDate);
 	}
 
 	@Test
 	public void startDateQuestionSetShouldBeforeExpireDateQuestionSet() {
-		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,10), new Date(114,1,9));
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,30), new Date(114,1,29));
+		assertNull(q_set);
+	}
+
+	@Test
+	public void startDateofQuesitionSetShouldAfterCurrentDate(){
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,0,10), new Date(114,0,11));
 		assertNull(q_set);
 	}
 }

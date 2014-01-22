@@ -20,7 +20,7 @@ public class QuestionSet extends Model{
 	}
 
 	public static QuestionSet create(String name, int noOfTrial, Date startDate, Date expireDate) {
-		if(startDate.before(expireDate)) {
+		if(startDate.before(expireDate) && startDate.after(new Date())) {
 			QuestionSet questionSet = new QuestionSet();
 			questionSet.name = name;
 			questionSet.noOfTrial = noOfTrial;
