@@ -72,4 +72,10 @@ public class QuestionSetTest extends WithApplication {
 		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,0,10), new Date(114,0,11));
 		assertNull(q_set);
 	}
+
+	@Test
+	public void startDateofQuesitionSetShouldEqualsCurrentDate(){
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(), new Date(114,0,31));
+		assertNotNull(q_set);
+	}
 }
