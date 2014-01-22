@@ -24,4 +24,17 @@ public class QuestionSetTest extends WithApplication {
 		assertNull(q_set.startDate);
 		assertNull(q_set.expireDate);
 	}
+
+	@Test
+	public void questionSetShouldChangeValueOfTrialBySet(){
+		QuestionSet q_set = new QuestionSet();
+		q_set.setNoOfTrial(5);
+		assertEquals(5, q_set.noOfTrial);
+	}
+	@Test
+	public void questionSetShouldChangeValueOfTrialToTenBySet(){
+		QuestionSet q_set = new QuestionSet();
+		q_set.setNoOfTrial(10);
+		assertEquals(10, q_set.noOfTrial);
+	}
 }
