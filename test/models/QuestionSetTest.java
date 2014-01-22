@@ -48,7 +48,22 @@ public class QuestionSetTest extends WithApplication {
 
 	@Test
 	public void questionSetShouldBeCreateBySubmit() {
-		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(), new Date());
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,10), new Date(114,1,11));
 		assertNotNull(q_set);
+	}
+
+	@Test
+	public void questionSetShouldBeModifableWhenSubmit(){
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,10), new Date(114,1,11));
+		assertEquals("Experiment 1", q_set.name);
+		assertEquals(3, q_set.noOfTrial);
+		assertEquals(new Date(114, 1, 10),q_set.startDate);
+		assertEquals(new Date(114, 1, 11),q_set.expireDate);
+	}
+
+	@Test
+	public void startDateQuestionSetShouldBeforeExpireDateQuestionSet() {
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(114,1,10), new Date(114,1,9));
+		assertNull(q_set);
 	}
 }
