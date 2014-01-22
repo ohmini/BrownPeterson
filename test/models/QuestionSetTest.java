@@ -1,4 +1,5 @@
 import org.junit.*;
+import java.util.Date;
 import static org.junit.Assert.*;
 import play.test.WithApplication;
 import static play.test.Helpers.*;
@@ -36,5 +37,18 @@ public class QuestionSetTest extends WithApplication {
 		QuestionSet q_set = new QuestionSet();
 		q_set.setNoOfTrial(10);
 		assertEquals(10, q_set.noOfTrial);
+	}
+
+	@Test
+	public void questionSetShouldChangeNameBySet() {
+		QuestionSet q_set = new QuestionSet();
+		q_set.setName("Project HIP !!!");
+		assertEquals("Project HIP !!!", q_set.name);
+	}
+
+	@Test
+	public void questionSetShouldBeCreateBySubmit() {
+		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(), new Date());
+		assertNotNull(q_set);
 	}
 }

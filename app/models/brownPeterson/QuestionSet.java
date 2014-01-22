@@ -18,4 +18,13 @@ public class QuestionSet extends Model{
 		this.name = "Brown Peterson";
 		this.noOfTrial = 3;
 	}
+
+	public static QuestionSet create(String name, int noOfTrial, Date startDate, Date expireDate) {
+		QuestionSet questionSet = new QuestionSet();
+		questionSet.name = name;
+		questionSet.noOfTrial = noOfTrial;
+		questionSet.startDate = startDate;
+		questionSet.expireDate = expireDate;
+		return questionSet;
+	}
 }
