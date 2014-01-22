@@ -11,7 +11,18 @@ create table question (
   constraint pk_question primary key (id))
 ;
 
+create table question_set (
+  id                        bigint not null,
+  name                      varchar(255),
+  no_of_trial               integer,
+  start_date                timestamp,
+  expire_date               timestamp,
+  constraint pk_question_set primary key (id))
+;
+
 create sequence question_seq;
+
+create sequence question_set_seq;
 
 
 
@@ -22,7 +33,11 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists question;
 
+drop table if exists question_set;
+
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists question_seq;
+
+drop sequence if exists question_set_seq;
 
