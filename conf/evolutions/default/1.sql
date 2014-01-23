@@ -22,6 +22,10 @@ create table question_set (
 
 create table trial (
   id                        bigint not null,
+  trigram_type              integer,
+  trigram_language          integer,
+  constraint ck_trial_trigram_type check (trigram_type in (0,1)),
+  constraint ck_trial_trigram_language check (trigram_language in (0,1)),
   constraint pk_trial primary key (id))
 ;
 
