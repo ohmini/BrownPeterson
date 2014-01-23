@@ -94,4 +94,16 @@ public class QuestionSetTest extends WithApplication {
         assertEquals(5,questionSetList.size());
 
     }
+
+    @Test
+    public void retrieveQuestionSetById() {
+    	QuestionSet.create("Experiment 1", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        QuestionSet.create("Experiment 2", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        QuestionSet.create("Experiment 3", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        QuestionSet.create("Experiment 4", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        QuestionSet.create("Experiment 5", 3, new Date(114,2,10), new Date(114,2,11)).save();
+
+        assertNotNull(QuestionSet.findById(3));
+        assertEquals(3, QuestionSet.findById(3).id);
+    }
 }

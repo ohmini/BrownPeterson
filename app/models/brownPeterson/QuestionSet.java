@@ -20,8 +20,12 @@ public class QuestionSet extends Model{
 		this.noOfTrial = 3;
 	}
 
+	public static QuestionSet findById(int id) {
+		return find.byId(new Long(id));
+	}
+
 	public static QuestionSet create(String name, int noOfTrial, Date startDate, Date expireDate) {
-		if(startDate.before(expireDate) && (startDate.after(new Date()) || startDate.equals(new Date()))) {
+		if(isCorrectDate(startDate, expireDate)) {
 			QuestionSet questionSet = new QuestionSet();
 			questionSet.name = name;
 			questionSet.noOfTrial = noOfTrial;
@@ -30,6 +34,10 @@ public class QuestionSet extends Model{
 			return questionSet;
 		}
 		return null;
+	}
+
+	private static boolean isCorrectDate(Date startDate, Date expireDate) {
+		return (startDate.before(expireDate) && (startDate.after(new Date()) || startDate.equals(new Date())));
 	}
 
 	public static List<QuestionSet> findAll(){
