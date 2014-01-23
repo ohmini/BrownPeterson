@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import play.test.WithApplication;
 import static play.test.Helpers.*;
 import models.brownPeterson.QuestionSet;
+import java.util.List;
 
 public class QuestionSetTest extends WithApplication {
 	@Before
@@ -78,4 +79,19 @@ public class QuestionSetTest extends WithApplication {
 		QuestionSet q_set = QuestionSet.create("Experiment 1", 3, new Date(), new Date(114,0,31));
 		assertNotNull(q_set);
 	}
+
+    @Test
+    public void retrieveAllQuestionSet(){
+
+        QuestionSet.create("Experiment 1", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        QuestionSet.create("Experiment 2", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        QuestionSet.create("Experiment 3", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        QuestionSet.create("Experiment 4", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        QuestionSet.create("Experiment 5", 3, new Date(114,2,10), new Date(114,2,11)).save();
+
+        List<QuestionSet> questionSetList = QuestionSet.findAll();
+
+        assertEquals(5,questionSetList.size());
+
+    }
 }

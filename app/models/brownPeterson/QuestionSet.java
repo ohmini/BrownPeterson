@@ -4,6 +4,7 @@ import play.db.ebean.*;
 import javax.persistence.*;
 import java.util.Date;
 import play.data.format.Formats;
+import java.util.List;
 
 @Entity
 public class QuestionSet extends Model{
@@ -30,4 +31,10 @@ public class QuestionSet extends Model{
 		}
 		return null;
 	}
+
+	public static List<QuestionSet> findAll(){
+		return find.all();
+	}
+
+	public static Finder<Long,QuestionSet> find = new Finder(Long.class,QuestionSet.class);
 }
