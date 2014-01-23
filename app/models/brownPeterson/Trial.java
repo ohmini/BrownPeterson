@@ -18,4 +18,10 @@ public class Trial extends Model{
 		trial.questionSet = questionSet;
 		return trial;
 	}
+
+	public static Trial findById(int id) {
+		return find.byId(new Long(id));
+	}
+
+	public static Finder<Long, Trial> find = new Finder(Long.class, Trial.class);
 }

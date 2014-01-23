@@ -32,4 +32,10 @@ public class TrialTest extends WithApplication {
 		Trial trial = Trial.create(q_set);
 		assertEquals(q_set.id, trial.questionSet.id);
 	}
+
+	@Test
+	public void trialShouldBeFindById() {
+		new Trial().save();
+		assertEquals(1, Trial.findById(1).id);
+	}
 }
