@@ -20,9 +20,16 @@ create table question_set (
   constraint pk_question_set primary key (id))
 ;
 
+create table trial (
+  id                        bigint not null,
+  constraint pk_trial primary key (id))
+;
+
 create sequence question_seq;
 
 create sequence question_set_seq;
+
+create sequence trial_seq;
 
 
 
@@ -35,9 +42,13 @@ drop table if exists question;
 
 drop table if exists question_set;
 
+drop table if exists trial;
+
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists question_seq;
 
 drop sequence if exists question_set_seq;
+
+drop sequence if exists trial_seq;
 
