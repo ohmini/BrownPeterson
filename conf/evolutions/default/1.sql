@@ -24,6 +24,7 @@ create table trial (
   id                        bigint not null,
   trigram_type              integer,
   trigram_language          integer,
+  question_set_id           bigint,
   constraint ck_trial_trigram_type check (trigram_type in (0,1)),
   constraint ck_trial_trigram_language check (trigram_language in (0,1)),
   constraint pk_trial primary key (id))
@@ -35,6 +36,8 @@ create sequence question_set_seq;
 
 create sequence trial_seq;
 
+alter table trial add constraint fk_trial_questionSet_1 foreign key (question_set_id) references question_set (id) on delete restrict on update restrict;
+create index ix_trial_questionSet_1 on trial (question_set_id);
 
 
 
