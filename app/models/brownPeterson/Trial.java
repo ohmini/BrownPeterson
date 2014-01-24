@@ -2,6 +2,7 @@ package models.brownPeterson;
 
 import play.db.ebean.*;
 import javax.persistence.*;
+import models.*;
 
 @Entity
 public class Trial extends Model{

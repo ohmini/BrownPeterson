@@ -5,6 +5,7 @@ import play.test.WithApplication;
 import static play.test.Helpers.*;
 import models.brownPeterson.*;
 import java.util.List;
+import models.*;
 
 public class ExperimentScheduleTest extends WithApplication {
 	@Before

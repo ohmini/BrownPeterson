@@ -1,4 +1,4 @@
-package models.brownPeterson;
+package models;
 
 import play.db.ebean.*;
 import javax.persistence.*;

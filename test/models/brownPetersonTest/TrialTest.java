@@ -3,6 +3,7 @@ import static play.test.Helpers.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 import models.brownPeterson.*;
+import models.*;
 
 
 public class TrialTest extends WithApplication {
