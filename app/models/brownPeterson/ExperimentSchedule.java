@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 import play.data.format.Formats;
 import java.util.List;
+import com.avaje.ebean.*;
 
 @Entity
 public class ExperimentSchedule extends Model{
@@ -21,7 +22,13 @@ public class ExperimentSchedule extends Model{
 	}
 
 	public static List<ExperimentSchedule> getCurrentWorking() {
+		//List<ExperimentSchedule> experimentScheduleList = find.where().ge("startDate",new Date()).le("expireDate",new Date()).findList();
 		List<ExperimentSchedule> experimentScheduleList = findAll();
+		for (ExperimentSchedule e : experimentScheduleList){
+			if (!isWorkingDate(e.startDate,e.expireDate)){
+				experimentScheduleList.remove(e);
+			}
+		}
 		return experimentScheduleList;
 	}
 
@@ -44,6 +51,11 @@ public class ExperimentSchedule extends Model{
 	private static boolean isCorrectDate(Date startDate, Date expireDate) {
 		return (startDate.before(expireDate) && (startDate.after(new Date()) || startDate.equals(new Date())));
 	}
+
+	private static boolean isWorkingDate(Date startDate, Date expireDate) {
+		return ((startDate.before(new Date()) || startDate.equals(new Date())) && (expireDate.after(new Date()) ||  expireDate.equals(new Date()) ) );
+	}
+
 
 	public static List<ExperimentSchedule> findAll(){
 		return find.all();

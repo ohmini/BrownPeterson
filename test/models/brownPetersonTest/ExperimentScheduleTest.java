@@ -11,6 +11,23 @@ public class ExperimentScheduleTest extends WithApplication {
 	public void setUp() {
 		start(fakeApplication(inMemoryDatabase()));
 	}
+	@Test
+	public void retrieveExperimentRunning() {
+
+		ExperimentSchedule.create("Experiment 1", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        ExperimentSchedule.create("Experiment 2", 3, new Date(114,2,10), new Date(114,2,11)).save();
+        ExperimentSchedule ex1 = ExperimentSchedule.create("Experiment 3", 3, new Date(114,2,22), new Date(114,2,23));
+        ExperimentSchedule ex2 = ExperimentSchedule.create("Experiment 4", 3, new Date(114,2,10), new Date(114,2,25));
+        ExperimentSchedule.create("Experiment 5", 3, new Date(114,2,10), new Date(114,2,11)).save();
+
+        ex1.startDate = new Date(114,0,22);
+        ex1.expireDate = new Date(114,0,25);
+        ex1.save();
+        ex2.startDate = new Date(114,0,10);
+        ex2.expireDate = new Date(114,0,26);
+        ex2.save();
+		assertEquals(2,ExperimentSchedule.getCurrentWorking().size());
+	}
 
 	@Test
 	public void retrieveExperimentRunningIsNotNull() {
