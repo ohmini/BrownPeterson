@@ -9,6 +9,8 @@ create table experiment_schedule (
   no_of_trial               integer,
   start_date                timestamp,
   expire_date               timestamp,
+  experiment_type           integer,
+  constraint ck_experiment_schedule_experiment_type check (experiment_type in (0)),
   constraint pk_experiment_schedule primary key (id))
 ;
 

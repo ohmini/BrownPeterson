@@ -14,7 +14,7 @@ public class User_Test extends WithApplication{
 		start(fakeApplication(inMemoryDatabase()));
 	}
 
-	@Test
+	/*@Test
 	public void createUserInfo(){
 
 		User user = new User("123","secret");
@@ -80,7 +80,7 @@ public class User_Test extends WithApplication{
         	new User("100","1234").save();
         	new User("100","1234").save();
         	
-        }
+        }*/
 }
 
 
