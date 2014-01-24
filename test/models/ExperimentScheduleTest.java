@@ -15,7 +15,23 @@ public class ExperimentScheduleTest extends WithApplication {
 	}
 
 	@Test
-	public void experimentScheduleShouldBeCreateCorrectlyHasNoOfTrial() {
+	public void retrieveAllWorkingExperiment() {
+		Date date = new Date();
+		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 0, 1), new Date(date.getYear()+1, 0, 31), ExperimentType.BROWNPETERSON).save();
+		
+		assertEquals(1, ExperimentSchedule.getAllWorkingExperiment().size());
+	}
+
+	@Test
+	public void retrieveAllWorkingExperimentShouldNotNull() {
+		Date date = new Date();
+		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 0, 1), new Date(date.getYear()+1, 0, 31), ExperimentType.BROWNPETERSON).save();
+		
+		assertNotNull(ExperimentSchedule.getAllWorkingExperiment());
+	}
+
+	@Test
+	public void shouldBeCreateCorrectlyHasNoOfTrial() {
 		Date date = new Date();
 		ExperimentSchedule experimentSchedule = new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()+1, 0, 1), new Date(date.getYear()+1, 0, 31), ExperimentType.BROWNPETERSON);
 		
@@ -27,7 +43,7 @@ public class ExperimentScheduleTest extends WithApplication {
 	}
 
 	@Test
-	public void experimentScheduleShouldBeNotNull() {
+	public void shouldBeNotNull() {
 		assertNotNull(new ExperimentSchedule());
 	}
 }

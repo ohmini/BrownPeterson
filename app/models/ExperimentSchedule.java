@@ -6,6 +6,7 @@ import java.util.Date;
 import play.data.format.Formats;
 import java.util.List;
 import com.avaje.ebean.*;
+import java.util.ArrayList;
 
 @Entity
 public class ExperimentSchedule extends Model{
@@ -23,6 +24,11 @@ public class ExperimentSchedule extends Model{
 		this.startDate = startDate;
 		this.expireDate = expireDate;
 		this.experimentType = experimentType;
+	}
+
+	public static List<ExperimentSchedule> getAllWorkingExperiment() {
+		List<ExperimentSchedule> experiments = find.where().betweenProperties("startDate", "expireDate", new Date()).findList();
+		return experiments;
 	}
 
 	public static Finder<Long,ExperimentSchedule> find = new Finder(Long.class,ExperimentSchedule.class);
