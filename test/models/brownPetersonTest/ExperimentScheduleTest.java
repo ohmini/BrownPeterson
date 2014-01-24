@@ -13,6 +13,11 @@ public class ExperimentScheduleTest extends WithApplication {
 	}
 
 	@Test
+	public void retrieveExperimentRunningIsNotNull() {
+		assertNotNull(ExperimentSchedule.getCurrentWorking());
+	}
+
+	@Test
 	public void questionSetShouldCreateAndNotNull(){
 		ExperimentSchedule experimentSchedule = new ExperimentSchedule();
 		assertNotNull(experimentSchedule);

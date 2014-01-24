@@ -20,6 +20,11 @@ public class ExperimentSchedule extends Model{
 		this.noOfTrial = 3;
 	}
 
+	public static List<ExperimentSchedule> getCurrentWorking() {
+		List<ExperimentSchedule> experimentScheduleList = findAll();
+		return experimentScheduleList;
+	}
+
 	public static ExperimentSchedule findById(int id) {
 		return find.byId(new Long(id));
 	}
