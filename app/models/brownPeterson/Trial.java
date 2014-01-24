@@ -11,11 +11,11 @@ public class Trial extends Model{
 	public TrigramLanguage trigramLanguage = TrigramLanguage.ENGLISH;
 
 	@ManyToOne
-	public QuestionSet questionSet;
+	public ExperimentSchedule experimentSchedule;
 
-	public static Trial create(QuestionSet questionSet){
+	public static Trial create(ExperimentSchedule experimentSchedule){
 		Trial trial = new Trial();
-		trial.questionSet = questionSet;
+		trial.experimentSchedule = experimentSchedule;
 		return trial;
 	}
 

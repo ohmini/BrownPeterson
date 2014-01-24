@@ -11,11 +11,4 @@ public class BrownPetersonTest extends WithApplication {
 	public void setUp() {
 		start(fakeApplication(inMemoryDatabase()));
 	}
-
-	@Test
-	public void retrieveTrialList() {
-		new QuestionSet().save();
-		QuestionSet q_set = QuestionSet.findById(1);
-		assertNotNull(q_set.createTrialList());
-	}
 }

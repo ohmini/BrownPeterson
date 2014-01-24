@@ -27,10 +27,10 @@ public class TrialTest extends WithApplication {
 
 	@Test
 	public void trialShouldBeCreate() {
-		new QuestionSet().save();
-		QuestionSet q_set = QuestionSet.findById(1);
+		new ExperimentSchedule().save();
+		ExperimentSchedule q_set = ExperimentSchedule.findById(1);
 		Trial trial = Trial.create(q_set);
-		assertEquals(q_set.id, trial.questionSet.id);
+		assertEquals(q_set.id, trial.experimentSchedule.id);
 	}
 
 	@Test
