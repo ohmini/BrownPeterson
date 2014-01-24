@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import models.brownPeterson.*;
 import models.*;
 
-
 public class TrialTest extends WithApplication {
 	@Before
 	public void setUp() {
@@ -39,4 +38,6 @@ public class TrialTest extends WithApplication {
 		new Trial().save();
 		assertEquals(1, Trial.findById(1).id);
 	}
+
+	
 }

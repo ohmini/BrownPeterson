@@ -7,6 +7,7 @@ import models.brownPeterson.*;
 import java.util.List;
 import models.*;
 
+@Ignore
 public class ExperimentScheduleTest extends WithApplication {
 	@Before
 	public void setUp() {
