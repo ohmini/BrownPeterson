@@ -18,8 +18,11 @@ public class ExperimentScheduleTest extends WithApplication {
 	public void retrieveAllWorkingExperiment() {
 		Date date = new Date();
 		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 0, 1), new Date(date.getYear()+1, 0, 31), ExperimentType.BROWNPETERSON).save();
-		
-		assertEquals(1, ExperimentSchedule.getAllWorkingExperiment().size());
+		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 0, 1), new Date(date.getYear()-1, 0, 31), ExperimentType.BROWNPETERSON).save();
+		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()+1, 0, 1), new Date(date.getYear()+1, 0, 31), ExperimentType.BROWNPETERSON).save();
+		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 2, 1), new Date(date.getYear()+1, 2, 31), ExperimentType.BROWNPETERSON).save();
+
+		assertEquals(2, ExperimentSchedule.getAllWorkingExperiment().size());
 	}
 
 	@Test
