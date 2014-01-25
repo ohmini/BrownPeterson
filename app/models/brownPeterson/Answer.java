@@ -1,5 +1,5 @@
 package models.brownPeterson;
-
+import models.*;
 import play.db.ebean.*;
 import javax.persistence.*;
 
@@ -13,11 +13,18 @@ public class Answer extends Model{
 	public double time;
 	public int countdownResult;
 
-	public Answer(String firstWord,String secondWord,String thirdWord,double time,int countdownResult){
+	@ManyToOne
+	public User user;
+	@ManyToOne
+	public Quiz quiz;
+
+	public Answer(String firstWord,String secondWord,String thirdWord,double time,int countdownResult, User user, Quiz quiz){
 		this.firstWord = firstWord;
 		this.secondWord = secondWord;
 		this.thirdWord = thirdWord;
 		this.time = time;
 		this.countdownResult = countdownResult;
+		this.user = user;
+		this.quiz = quiz;
 	}
 }

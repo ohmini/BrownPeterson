@@ -6,6 +6,7 @@ import play.test.WithApplication;
 import static play.test.Helpers.*;
 import java.util.List;
 
+@Ignore
 public class QuizTest extends WithApplication{
 	@Before
 	public void setUp(){
