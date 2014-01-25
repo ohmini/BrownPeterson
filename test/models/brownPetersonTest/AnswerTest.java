@@ -13,6 +13,7 @@ public class AnswerTest extends WithApplication {
 	}
 	@Test
 	public void shouldCreateAndNotNull(){new Trial().save();
+		new Trial().save();
 		new Question("hello","world","!!!").save();
 		Trial trial = Trial.findById(1);
 		Question question = Question.findQuestionById(1);
@@ -26,6 +27,7 @@ public class AnswerTest extends WithApplication {
 
 	@Test
 	public void attributeShouldBeCorrect(){
+		new Trial().save();
 		new Question("hello","world","!!!").save();
 		Trial trial = Trial.findById(1);
 		Question question = Question.findQuestionById(1);

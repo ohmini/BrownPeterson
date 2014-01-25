@@ -5,8 +5,7 @@ import javax.persistence.*;
 
 @Entity
 public class Answer extends Model{
-	@Id
-	public long id;
+
 	public String firstWord;
 	public String secondWord;
 	public String thirdWord;
@@ -27,4 +26,5 @@ public class Answer extends Model{
 		this.user = user;
 		this.quiz = quiz;
 	}
+
 }
