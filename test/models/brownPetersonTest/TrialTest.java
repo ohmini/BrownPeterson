@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import models.brownPeterson.*;
 import models.*;
 import java.util.Date;
+import java.util.List;
 
+@Ignore
 public class TrialTest extends WithApplication {
 	@Before
 	public void setUp() {
@@ -26,10 +28,13 @@ public class TrialTest extends WithApplication {
 		assertEquals(TrigramLanguage.ENGLISH, new Trial().trigramLanguage);
 	}
 
-	@Ignore
 	@Test
 	public void trialShouldBeCreate() {
-		fail();
+		Date date = new Date();
+		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 0, 1), 
+			new Date(date.getYear()+1, 0, 31), ExperimentType.BROWNPETERSON).save();
+		ExperimentSchedule ex = ExperimentSchedule.find.byId(new Long(1));
+		assertNotNull(Trial.create(ex));
 	}
 
 	@Test
@@ -39,7 +44,7 @@ public class TrialTest extends WithApplication {
 	}
 
 	@Test
-	public void shoudBeFindByTrialInvolvingAndNotNull(){
+	public void shoudBeFindByTrialsInvolving(){
 		Date date = new Date();
 		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 0, 1), 
 			new Date(date.getYear()+1, 0, 31), ExperimentType.BROWNPETERSON).save();
@@ -57,8 +62,14 @@ public class TrialTest extends WithApplication {
 		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 0, 1), 
 			new Date(date.getYear()+1, 0, 31), ExperimentType.BROWNPETERSON).save();
 		ExperimentSchedule ex = ExperimentSchedule.find.byId(new Long(1));
-		Trial trial = Trial.create(ex);
-		assertEquals(trial.schedule.id, ex.id);
+		Trial.create(ex).save();
+		Trial.create(ex).save();
+		Trial.create(ex).save();
+
+		List<Trial> trials = Trial.findInvolving(ex);
+		assertEquals(1, trials.get(0).id);
+		assertEquals(2, trials.get(1).id);
+		assertEquals(3, trials.get(2).id);
 	}
 
 	
