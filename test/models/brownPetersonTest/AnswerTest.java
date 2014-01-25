@@ -36,5 +36,11 @@ public class AnswerTest extends WithApplication {
 		
 		Answer answer = new Answer("first word", "second word", "third word", 13.3, 99, user, quiz);
 
+		assertEquals("first word", answer.firstWord);
+		assertEquals("second word", answer.secondWord);
+		assertEquals("third word", answer.thirdWord);
+
+		assertEquals("123", answer.user.id);
+		assertEquals(200, answer.quiz.countdown);
 	}
 }
