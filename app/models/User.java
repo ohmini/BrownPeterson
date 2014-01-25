@@ -3,7 +3,6 @@ package models;
 import java.util.List;
 import play.db.ebean.*;
 import javax.persistence.*;
-import java.util.Collections;
 @Entity
 public class User extends Model{
 
