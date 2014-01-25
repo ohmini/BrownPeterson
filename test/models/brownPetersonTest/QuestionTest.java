@@ -11,7 +11,7 @@ public class QuestionTest extends WithApplication{
 		start(fakeApplication(inMemoryDatabase()));
 	}
 
-	/*@Test
+	@Test
 	public void createQuestion(){
         Question q = new Question("hello","world","!!!");
         assertNotNull(q);
@@ -145,5 +145,5 @@ public class QuestionTest extends WithApplication{
     	List<Question> questionList = Question.getQuestionListBy(10);
 
     	assertNull(questionList);
-    }*/
+    }
 }

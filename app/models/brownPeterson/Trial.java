@@ -14,7 +14,7 @@ public class Trial extends Model{
 	@ManyToOne
 	public ExperimentSchedule experimentSchedule;
 
-	/*public static Trial create(ExperimentSchedule experimentSchedule){
+	public static Trial create(ExperimentSchedule experimentSchedule){
 		Trial trial = new Trial();
 		trial.experimentSchedule = experimentSchedule;
 		return trial;
@@ -24,5 +24,5 @@ public class Trial extends Model{
 		return find.byId(new Long(id));
 	}
 
-	public static Finder<Long, Trial> find = new Finder(Long.class, Trial.class);*/
+	public static Finder<Long, Trial> find = new Finder(Long.class, Trial.class);
 }

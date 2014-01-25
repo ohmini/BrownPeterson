@@ -11,7 +11,7 @@ public class TrialTest extends WithApplication {
 		start(fakeApplication(inMemoryDatabase()));
 	}
 
-	/*@Test
+	@Test
 	public void trialShouldCreateAndNotNull(){
 		assertNotNull(new Trial());
 	}
@@ -26,16 +26,8 @@ public class TrialTest extends WithApplication {
 	}
 
 	@Test
-	public void trialShouldBeCreate() {
-		new ExperimentSchedule().save();
-		ExperimentSchedule q_set = ExperimentSchedule.findById(1);
-		Trial trial = Trial.create(q_set);
-		assertEquals(q_set.id, trial.experimentSchedule.id);
-	}
-
-	@Test
 	public void trialShouldBeFindById() {
 		new Trial().save();
 		assertEquals(1, Trial.findById(1).id);
-	}*/
+	}
 }
