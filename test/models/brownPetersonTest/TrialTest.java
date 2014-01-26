@@ -7,10 +7,7 @@ import models.*;
 import java.util.Date;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
 @Ignore
->>>>>>> 58decdd1b08500c3b717cf4d2eb18d7a1d734b8a
 public class TrialTest extends WithApplication {
 	@Before
 	public void setUp() {
@@ -32,8 +29,6 @@ public class TrialTest extends WithApplication {
 	}
 
 	@Test
-<<<<<<< HEAD
-=======
 	public void trialShouldBeCreate() {
 		Date date = new Date();
 		new ExperimentSchedule("Experiment 1", 5, new Date(date.getYear()-1, 0, 1), 
@@ -43,7 +38,6 @@ public class TrialTest extends WithApplication {
 	}
 
 	@Test
->>>>>>> 58decdd1b08500c3b717cf4d2eb18d7a1d734b8a
 	public void trialShouldBeFindById() {
 		new Trial().save();
 		assertEquals(1, Trial.findById(1).id);
