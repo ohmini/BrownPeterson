@@ -1,5 +1,4 @@
 package models;
-import models.brownPeterson.Round;
 import models.brownPeterson.Trial;
 import play.db.ebean.*;
 import javax.persistence.*;
@@ -18,9 +17,7 @@ public class ExperimentSchedule extends Model{
 	public Date startDate;
 	public Date expireDate;
 	public ExperimentType experimentType;
-
-	@OneToMany
-	public List<Round> rounds = new ArrayList<Round>();
+	
 	@OneToMany
 	public List<Trial> trials = new ArrayList<Trial>();
 

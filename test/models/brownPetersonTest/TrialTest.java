@@ -21,11 +21,11 @@ public class TrialTest extends WithApplication {
 
 	@Test
 	public void trigramShouldBeWordByDefault() {
-		assertEquals(TrigramType.WORD, new Trial().trigramType);
+		assertEquals("word", new Trial().trigramType);
 	}
 	@Test
 	public void trigramShouldBeEnglishByDefault(){
-		assertEquals(TrigramLanguage.ENGLISH, new Trial().trigramLanguage);
+		assertEquals("english", new Trial().trigramLanguage);
 	}
 
 	@Test

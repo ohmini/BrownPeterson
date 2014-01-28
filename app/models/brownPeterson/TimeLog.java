@@ -1,12 +1,14 @@
-package models;
+package models.brownPeterson;
 
-import models.brownPeterson.*;
+import models.*;
 import java.util.List;
 import play.db.ebean.*;
 import javax.persistence.*;
 import java.util.Date;
 @Entity
 public class TimeLog extends Model{
+	@Id
+	public long id;
 	public Date startTime;
 	public Date endTime;
 
@@ -26,5 +28,7 @@ public class TimeLog extends Model{
 		timeLog.trial = trial;
 		return timeLog;
 	}
+
+	public static Finder<Long, TimeLog> find = new Finder(Long.class, TimeLog.class);
 
 }

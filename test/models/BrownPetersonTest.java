@@ -31,13 +31,41 @@ public class BrownPetersonTest extends WithApplication {
 		assertEquals(1, User.find.findRowCount());
 	}
 
-	@Ignore
+	@Test
 	public void trials_should_have_1_row(){
-		assertEquals(1, Trial.find.findRowCount());
+		assertEquals(3, Trial.find.findRowCount());
+	}
+	@Test
+	public void quizzes_should_have_3_row(){
+		assertEquals(3, Quiz.find.findRowCount());
+	}
+	@Test
+	public void timelog_should_have_1_row(){
+		assertEquals(1, TimeLog.find.findRowCount());
+	}
+	@Test
+	public void answers_should_have_3_rows(){
+		assertEquals(3, Answer.find.findRowCount());
 	}
 
 	@Test
-	public void rounds_should_have_3_round(){
-		assertEquals(3, Round.find.findRowCount());
+	public void retrieve_all_answers_success(){
+		List<Answer> answers = Answer.find.all();
+		assertEquals("q1w1", answers.get(0).firstWord);
+		assertEquals("q2", answers.get(1).secondWord);
+		assertEquals("q3w3", answers.get(2).thirdWord);
+	}
+
+	@Test
+	public void retrieve_answers_involving_by_user_success(){
+		User user = User.find.where().eq("id", "s550").findUnique();
+		List<Answer> answers = Answer.find.where().eq("user_id", user.id).findList();
+		assertEquals(3, answers.size());
+	}
+	@Test
+	public void retrieve_Quizzes_involving_by_trial_success(){
+		Trial trial = Trial.find.where().eq("id", 1).findUnique();
+		List<Quiz> quizzes = Quiz.find.where().eq("trial_id", trial.id).findList();
+		assertEquals(1, quizzes.size());
 	}
 }

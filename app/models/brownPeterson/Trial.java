@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class Trial extends Model{
 	@Id
 	public long id;
-	public TrigramType trigramType = TrigramType.WORD;
-	public TrigramLanguage trigramLanguage = TrigramLanguage.ENGLISH;
+	public String trigramType = "word";
+	public String trigramLanguage = "thai";
 
 	@ManyToOne
 	public ExperimentSchedule schedule;
-	//@OneToMany
-	//public List<TimeLog> timeLogs = new ArrayList<TimeLog>();
+	@OneToMany
+	public List<TimeLog> timeLogs = new ArrayList<TimeLog>();
 
 	public static Trial create(ExperimentSchedule experimentSchedule){
 		Trial trial = new Trial();
@@ -33,4 +33,5 @@ public class Trial extends Model{
 	}
 
 	public static Finder<Long, Trial> find = new Finder(Long.class, Trial.class);
+
 }

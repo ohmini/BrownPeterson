@@ -1,7 +1,7 @@
 #ExperimentSchedule
 - &ex1 !!models.ExperimentSchedule
     name:           Ex1
-    noOfTrial:      1
+    noOfTrial:      3
 
 #Question
 - &Question1 !!models.brownPeterson.Question
@@ -23,13 +23,63 @@
 - &ohm !!models.User
     id:                     s550
     password:               password
-#Round
-- &round1 !!models.brownPeterson.Round
+#Trial
+- &round1 !!models.brownPeterson.Trial
     trigramLanguage:       english
+    trigramType:    word
     schedule: *ex1
-- &round2 !!models.brownPeterson.Round
+- &round2 !!models.brownPeterson.Trial
     trigramLanguage:       thai
+    trigramType:    word
     schedule: *ex1
-- &round3 !!models.brownPeterson.Round
+- &round3 !!models.brownPeterson.Trial
     trigramLanguage:       english
+    trigramType:    word 
     schedule: *ex1
+- &quiz1 !!models.brownPeterson.Quiz
+    countdown:                 100
+    flashTime:                 5
+    trial: *round1
+    question: *Question1
+- &quiz2 !!models.brownPeterson.Quiz
+    countdown:                 90
+    flashTime:                 6
+    trial: *round2
+    question: *Question3
+- &quiz3 !!models.brownPeterson.Quiz
+    countdown:                 70
+    flashTime:                 7
+    trial: *round2
+    question: *Question3
+
+#TimeLog
+- &timelog1 !!models.brownPeterson.TimeLog
+    startTime: 2011-11-15
+    endTime: 2014-01-30
+    user: *ohm
+    trial: *round1
+#Answer
+- &answer1 !!models.brownPeterson.Answer
+    firstWord:              q1w1                
+    secondWord:             q1w2
+    thirdWord:              q1w3
+    time:                   5
+    countdownResult:        95
+    user: *ohm                 
+    quiz: *quiz1           
+- &answer2 !!models.brownPeterson.Answer
+    firstWord:              wrong                
+    secondWord:             q2
+    thirdWord:              q3
+    time:                   15
+    countdownResult:        100
+    user: *ohm                 
+    quiz: *quiz2
+- &answer3 !!models.brownPeterson.Answer
+    firstWord:              q3w1                
+    secondWord:             wrong
+    thirdWord:              q3w3
+    time:                   10
+    countdownResult:        70
+    user: *ohm                 
+    quiz: *quiz3
