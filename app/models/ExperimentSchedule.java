@@ -1,5 +1,6 @@
 package models;
-
+import models.brownPeterson.Round;
+import models.brownPeterson.Trial;
 import play.db.ebean.*;
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +18,11 @@ public class ExperimentSchedule extends Model{
 	public Date startDate;
 	public Date expireDate;
 	public ExperimentType experimentType;
+
+	@OneToMany
+	public List<Round> rounds = new ArrayList<Round>();
+	@OneToMany
+	public List<Trial> trials = new ArrayList<Trial>();
 
 	public ExperimentSchedule(String name, int noOfTrial, Date startDate, Date expireDate, ExperimentType experimentType) {
 		this.name = name;

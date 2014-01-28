@@ -4,6 +4,7 @@ import play.db.ebean.*;
 import javax.persistence.*;
 import models.*;
 import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class Trial extends Model{
@@ -14,6 +15,8 @@ public class Trial extends Model{
 
 	@ManyToOne
 	public ExperimentSchedule schedule;
+	//@OneToMany
+	//public List<TimeLog> timeLogs = new ArrayList<TimeLog>();
 
 	public static Trial create(ExperimentSchedule experimentSchedule){
 		Trial trial = new Trial();

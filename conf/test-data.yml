@@ -1,0 +1,35 @@
+#ExperimentSchedule
+- &ex1 !!models.ExperimentSchedule
+    name:           Ex1
+    noOfTrial:      1
+
+#Question
+- &Question1 !!models.brownPeterson.Question
+    firstWord:                q1w1
+    secondWord:               q1w2
+    thirdWord:                q1w3  
+
+- &Question2 !!models.brownPeterson.Question
+    firstWord:                q2w1
+    secondWord:               q2w2
+    thirdWord:                q2w3
+
+- &Question3 !!models.brownPeterson.Question
+    firstWord:                q3w1
+    secondWord:               q3w2
+    thirdWord:                q3w3
+
+#User
+- &ohm !!models.User
+    id:                     s550
+    password:               password
+#Round
+- &round1 !!models.brownPeterson.Round
+    trigramLanguage:       english
+    schedule: *ex1
+- &round2 !!models.brownPeterson.Round
+    trigramLanguage:       thai
+    schedule: *ex1
+- &round3 !!models.brownPeterson.Round
+    trigramLanguage:       english
+    schedule: *ex1

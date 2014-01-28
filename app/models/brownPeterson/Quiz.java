@@ -18,6 +18,9 @@ public class Quiz extends Model{
 	@ManyToOne
 	public Question question;
 
+	@OneToMany
+	public List<Answer> answers = new ArrayList<Answer>();
+
 	public Quiz(int countdown, int flashTime){
 		this.countdown = countdown;
 		this.flashTime = flashTime;
