@@ -5,11 +5,11 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static play.test.Helpers.*;
 
-
+@Ignore
 public class AnswerTest extends WithApplication {
 	@Before
 	public void setUp(){
-		start(fakeApplication(inMemoryDatabase()));
+		start(fakeApplication());
 		
 	}
 	@Test

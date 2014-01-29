@@ -13,7 +13,7 @@ public class Trial extends Model{
 	@Column(nullable=false, length=20)
 	public String trigramType = "word";
 	@Column(nullable=false, length=20)
-	public String trigramLanguage = "thai";
+	public String trigramLanguage = "english";
 
 	@ManyToOne
 	public ExperimentSchedule schedule;

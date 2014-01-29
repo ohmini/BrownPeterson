@@ -8,11 +8,12 @@ import models.UserRole;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import javax.persistence.PersistenceException;
 
+
 @Ignore
 public class UserTest extends WithApplication{
 	@Before
 	public void setUp(){
-		start(fakeApplication(inMemoryDatabase()));
+		start(fakeApplication());
 	}
 
 	@Test

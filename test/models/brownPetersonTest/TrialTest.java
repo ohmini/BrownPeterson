@@ -11,7 +11,7 @@ import java.util.List;
 public class TrialTest extends WithApplication {
 	@Before
 	public void setUp() {
-		start(fakeApplication(inMemoryDatabase()));
+		start(fakeApplication());
 	}
 
 	@Test

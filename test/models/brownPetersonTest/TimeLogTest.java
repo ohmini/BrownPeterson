@@ -7,10 +7,11 @@ import static play.test.Helpers.*;
 import java.util.List;
 import java.util.Date;
 
+@Ignore
 public class TimeLogTest extends WithApplication{
 	@Before
 	public void setUp(){
-		start(fakeApplication(inMemoryDatabase()));
+		start(fakeApplication());
 
 	}
 
