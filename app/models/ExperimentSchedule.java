@@ -12,9 +12,13 @@ import java.util.ArrayList;
 public class ExperimentSchedule extends Model{
 	@Id
 	public long id;
+	@Column(nullable=false, length=30)
 	public String name = "Blank Experiment";
+	@Column(nullable=false, length=2)
 	public int noOfTrial = 3;
+	@Column(nullable=false)
 	public Date startDate;
+	@Column(nullable=false)
 	public Date expireDate;
 	public ExperimentType experimentType;
 	

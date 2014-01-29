@@ -10,7 +10,9 @@ import javax.persistence.*;
 public class User extends Model{
 
 	@Id
-	public String id;
+	@Column(length=20)
+	public String username;
+	@Column(nullable=false, length=20)
 	public String password;
 	public UserRole status = UserRole.STUDENT;
 
@@ -19,8 +21,8 @@ public class User extends Model{
 	@OneToMany
 	List<TimeLog> timeLogs = new ArrayList<TimeLog>();
 
-	public User(String id,String password){
-		this.id = id;
+	public User(String username,String password){
+		this.username = username;
 		this.password =password;
 	}
 

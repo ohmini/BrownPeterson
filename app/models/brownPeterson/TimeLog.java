@@ -9,7 +9,7 @@ import java.util.Date;
 public class TimeLog extends Model{
 	@Id
 	public long id;
-	public Date startTime;
+	public Date startTime = new Date();
 	public Date endTime;
 
 	@ManyToOne

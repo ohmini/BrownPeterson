@@ -5,6 +5,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static play.test.Helpers.*;
 
+
 public class AnswerTest extends WithApplication {
 	@Before
 	public void setUp(){
@@ -22,7 +23,7 @@ public class AnswerTest extends WithApplication {
 		new User("123","Secret").save();
 		User user = User.find.byId("123");
 
-		assertNotNull(new Answer("first word", "second word", "third word", 13.3, 99, user, quiz));
+		assertNotNull(new Answer("first word", "second word", "third word", 13.9, 99, user, quiz));
 	}
 
 	@Test
@@ -36,13 +37,13 @@ public class AnswerTest extends WithApplication {
 		new User("123","Secret").save();
 		User user = User.find.byId("123");
 		
-		Answer answer = new Answer("first word", "second word", "third word", 13.3, 99, user, quiz);
+		Answer answer = new Answer("first word", "second word", "third word", 13.9, 99, user, quiz);
 
 		assertEquals("first word", answer.firstWord);
 		assertEquals("second word", answer.secondWord);
 		assertEquals("third word", answer.thirdWord);
 
-		assertEquals("123", answer.user.id);
-		assertEquals(200, answer.quiz.countdown);
+		assertEquals("123", answer.user.username);
+		assertEquals(200, answer.quiz.initCountdown);
 	}
 }

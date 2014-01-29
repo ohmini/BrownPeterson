@@ -7,10 +7,14 @@ import javax.persistence.*;
 public class Answer extends Model{
 	@Id
 	public long id;
+	@Column(length=20)
 	public String firstWord;
+	@Column(length=20)
 	public String secondWord;
+	@Column(length=20)
 	public String thirdWord;
-	public double time;
+	public double usedTime;
+	@Column(length=3)
 	public int countdownResult;
 
 	@ManyToOne
@@ -18,11 +22,11 @@ public class Answer extends Model{
 	@ManyToOne
 	public Quiz quiz;
 
-	public Answer(String firstWord,String secondWord,String thirdWord,double time,int countdownResult, User user, Quiz quiz){
+	public Answer(String firstWord,String secondWord,String thirdWord,double usedTime,int countdownResult, User user, Quiz quiz){
 		this.firstWord = firstWord;
 		this.secondWord = secondWord;
 		this.thirdWord = thirdWord;
-		this.time = time;
+		this.usedTime = usedTime;
 		this.countdownResult = countdownResult;
 		this.user = user;
 		this.quiz = quiz;

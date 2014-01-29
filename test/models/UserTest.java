@@ -37,8 +37,8 @@ public class UserTest extends WithApplication{
         public void recieveUserInfoCorrectly(){
             new User("122","Secret").save();
 
-            User user = User.find.where().eq("id","122").findUnique();
-            assertEquals("122",user.id);
+            User user = User.find.where().eq("username","122").findUnique();
+            assertEquals("122",user.username);
             assertEquals("Secret",user.password);
 
         }
@@ -48,7 +48,7 @@ public class UserTest extends WithApplication{
 
         	new User("123","Secret").save();
 
-        	User user = User.find.where().eq("id","123").findUnique();
+        	User user = User.find.where().eq("username","123").findUnique();
      		assertNotNull(user);
         	assertEquals(user.status,UserRole.STUDENT);
 
@@ -57,10 +57,10 @@ public class UserTest extends WithApplication{
         @Test
         public void passwordShouldBeChangeCorrectly(){
         	new User("100", "secret").save();
-        	User user = User.find.where().eq("id", "100").findUnique();
+        	User user = User.find.where().eq("username", "100").findUnique();
         	user.setPassword("new_password");
         	user.save();
-        	User clone = User.find.where().eq("id", "100").findUnique();
+        	User clone = User.find.where().eq("username", "100").findUnique();
         	assertEquals(user.password, clone.password);
         }
 

@@ -30,7 +30,7 @@ public class QuizTest extends WithApplication{
 		Question question = Question.findQuestionById(1);
 		Quiz quiz = Quiz.create(200, 7, trial, question);
 
-		assertEquals(200, quiz.countdown);
+		assertEquals(200, quiz.initCountdown);
 		assertEquals(7, quiz.flashTime);
 		assertEquals(trial.id, quiz.trial.id);
 		assertEquals(question.id, quiz.question.id);
@@ -60,8 +60,8 @@ public class QuizTest extends WithApplication{
 		Quiz.create(80, 6, trial, question).save();
 
 		List<Quiz> quizzes = Quiz.findInvolving(trial);
-		assertEquals(200, quizzes.get(0).countdown);
-		assertEquals(100, quizzes.get(1).countdown);
-		assertEquals(80, quizzes.get(2).countdown);
+		assertEquals(200, quizzes.get(0).initCountdown);
+		assertEquals(100, quizzes.get(1).initCountdown);
+		assertEquals(80, quizzes.get(2).initCountdown);
 	}
 }

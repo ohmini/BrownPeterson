@@ -10,8 +10,11 @@ import java.util.ArrayList;
 public class Question extends Model {
 	@Id
 	public Long id;
+	@Column(nullable=false, length=20)
 	public String firstWord;
+	@Column(nullable=false, length=20)
 	public String secondWord;
+	@Column(nullable=false, length=20)
 	public String thirdWord;
 
 	public Question (String firstWord, String secondWord,String thirdWord){

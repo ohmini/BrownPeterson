@@ -10,7 +10,9 @@ import java.util.ArrayList;
 public class Trial extends Model{
 	@Id
 	public long id;
+	@Column(nullable=false, length=20)
 	public String trigramType = "word";
+	@Column(nullable=false, length=20)
 	public String trigramLanguage = "thai";
 
 	@ManyToOne
