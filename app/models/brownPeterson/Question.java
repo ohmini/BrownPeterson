@@ -41,6 +41,14 @@ public class Question extends Model {
 		}
 		return null;
 	}
+
+	public static List<Question> findInvolving(List<Quiz> quizzes){
+		List<Question> questions = new ArrayList<Question>();
+		for(Quiz quiz : quizzes){
+			questions.add(quiz.question);
+		}
+		return questions;
+	}
         
 	public static Finder<Long,Question> find = new Finder(Long.class,Question.class);
 

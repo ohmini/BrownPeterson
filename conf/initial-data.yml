@@ -155,17 +155,17 @@
     user: *ohm                 
     quiz: *quiz1           
 - &answer2 !!models.brownPeterson.Answer
-    firstWord:              wrong                
+    firstWord:              q2w3                
     secondWord:             q2w2
-    thirdWord:              q2w3
+    thirdWord:              q2w1
     usedTime:                   15
     countdownResult:        100
     user: *ohm                 
     quiz: *quiz2
 - &answer3 !!models.brownPeterson.Answer
-    firstWord:              q3w1                
-    secondWord:             wrong
-    thirdWord:              q3w3
+    firstWord:              q3w2                
+    secondWord:             q3w2
+    thirdWord:              q3w2
     usedTime:                   10
     countdownResult:        49
     user: *ohm                 
@@ -174,35 +174,35 @@
     usedTime:                   10
     countdownResult:        85
     user: *ohm                 
-    quiz: *quiz1           
+    quiz: *quiz4           
 - &answer5 !!models.brownPeterson.Answer
     firstWord:              wrong                
     thirdWord:              q5w3
     usedTime:                   15
     countdownResult:        100
     user: *ohm                 
-    quiz: *quiz2
+    quiz: *quiz5
 - &answer6 !!models.brownPeterson.Answer
     firstWord:              q6w1                
     usedTime:                   10
     countdownResult:        49
     user: *ohm                 
-    quiz: *quiz3
+    quiz: *quiz6
 - &answer7 !!models.brownPeterson.Answer
     firstWord:              q7w1                
     secondWord:             q7w2
     thirdWord:              q7w3
     usedTime:                   5
     user: *ohm                 
-    quiz: *quiz1           
+    quiz: *quiz7           
 - &answer8 !!models.brownPeterson.Answer
     firstWord:              wrong                
     secondWord:             q8w2
     thirdWord:              wrong
     usedTime:                   15
     user: *ohm                 
-    quiz: *quiz2
+    quiz: *quiz8
 - &answer9 !!models.brownPeterson.Answer
     usedTime:                   10
     user: *ohm                 
-    quiz: *quiz3
+    quiz: *quiz9
